@@ -1,8 +1,8 @@
 
 
-### 1. Примените измененный манифест:
+### 1. манифест:
 
-Теперь примените этот измененный манифест для развертывания Tarantool в Minikube.
+ манифест для развертывания Tarantool в Minikube.
 
 ```bash
 kubectl apply -f tarantool-deployment.yaml
@@ -10,7 +10,7 @@ kubectl apply -f tarantool-deployment.yaml
 
 ### 2. Подключение к Tarantool
 
-Для подключения к Tarantool, если вы хотите работать непосредственно с базой данных через консоль Tarantool, используйте команду:
+Для подключения к Tarantool базе данных через консоль Tarantool, используйте команду:
 
 ```bash
 tarantoolctl connect 192.168.49.2:30312
@@ -19,7 +19,7 @@ tarantoolctl connect 192.168.49.2:30312
 
 ### 3. Подключение извне через Minikube
 
-Если вы подключаетесь к Minikube извне, используйте IP-адрес Minikube и порт, который был выделен для вашего сервиса в Kubernetes (NodePort). Для этого выполните команду:
+Minikube извне, используйте IP-адрес Minikube и порт, который был выделен для вашего сервиса в Kubernetes (NodePort). Для этого выполните команду:
 
 ```bash
 minikube service tarantool-service --url
@@ -30,7 +30,7 @@ minikube service tarantool-service --url
 
 ### 4. Установка Helm-чарта
 
-После того как вы создали структуру и все файлы, вы можете установить чарт с помощью команды:
+ чарт с помощью команды:
 
 ```bash
 helm install my-tarantool-release ./my-tarantool-chart
