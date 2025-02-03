@@ -16,10 +16,10 @@ spec:
       - name: tarantool
         image: tarantool/tarantool
         ports:
-        - containerPort: 3301  # Изменил порт с 9019 на 3301
+        - containerPort: 3301  
         env:
         - name: TARANTOOL_LISTEN
-          value: "0.0.0.0:3301"  # Изменил на 3301
+          value: "0.0.0.0:3301"  
         volumeMounts:
         - name: data
           mountPath: /var/lib/tarantool
@@ -37,7 +37,7 @@ spec:
     app: tarantool
   ports:
     - protocol: TCP
-      port: 3301  # Изменил порт с 9019 на 3301
-      targetPort: 3301  # Изменил порт с 9019 на 3301
+      port: 3301  
+      targetPort: 3301  
   type: NodePort
 
