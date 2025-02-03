@@ -29,3 +29,22 @@ minikube service tarantool-service --url
 ```
 
 После этого вы получите URL, например, `http://192.168.49.2:30312`. Вы можете использовать его для подключения к вашему сервису Tarantool извне.
+
+```markdown
+### 4. Установка Helm-чарта
+
+После того как вы создали структуру и все файлы, вы можете установить чарт с помощью команды:
+
+```bash
+helm install my-tarantool-release ./my-tarantool-chart
+```
+
+Где `my-tarantool-release` — это имя вашего релиза, а `./my-tarantool-chart` — путь к директории, содержащей ваш чарт.
+
+### 5. Обновление значений
+
+Если вам нужно изменить параметры, такие как количество реплик или порт, вы можете изменить их в файле `values.yaml` и обновить релиз:
+
+```bash
+helm upgrade my-tarantool-release ./my-tarantool-chart
+```
