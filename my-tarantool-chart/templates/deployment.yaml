@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-tarantool
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-tarantool
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-tarantool
+    spec:
+      containers:
+      - name: tarantool
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}
+        env:
+        {{- range .Values.deployment.env }}
+        - name: {{ .name }}
+          value: {{ .value }}
+        {{- end }}
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/tarantool
+      volumes:
+      - name: data
+        emptyDir: {}
+

@@ -1,0 +1,15 @@
+replicaCount: 1
+image:
+  repository: tarantool/tarantool
+  pullPolicy: IfNotPresent
+  tag: latest
+service:
+  type: NodePort
+  port: 3301
+  targetPort: 3301
+deployment:
+  containerPort: 3301
+  env:
+    - name: TARANTOOL_LISTEN
+      value: "0.0.0.0:3301"
+

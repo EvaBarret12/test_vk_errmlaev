@@ -1,0 +1,6 @@
+apiVersion: v2
+name: my-tarantool-chart
+description: A Helm chart for deploying Tarantool
+version: 0.1.0
+appVersion: "2.10"
+
