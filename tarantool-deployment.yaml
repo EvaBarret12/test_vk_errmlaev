@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tarantool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tarantool
+  template:
+    metadata:
+      labels:
+        app: tarantool
+    spec:
+      containers:
+      - name: tarantool
+        image: tarantool/tarantool
+        ports:
+        - containerPort: 3301  # Изменил порт с 9019 на 3301
+        env:
+        - name: TARANTOOL_LISTEN
+          value: "0.0.0.0:3301"  # Изменил на 3301
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/tarantool
+      volumes:
+      - name: data
+        emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tarantool-service
+spec:
+  selector:
+    app: tarantool
+  ports:
+    - protocol: TCP
+      port: 3301  # Изменил порт с 9019 на 3301
+      targetPort: 3301  # Изменил порт с 9019 на 3301
+  type: NodePort
+
